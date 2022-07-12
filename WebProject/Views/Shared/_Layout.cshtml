@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@model WebProject.Models.EmailModel
+
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -49,94 +52,71 @@
             </div>
             <div class="offcanvas-body">
                 <div>
-                    @*@using (Html.BeginForm("SendEmail", "Email", FormMethod.Post))
-                                        {
-                                        <form>
-                                            <div class="form-group">
-                                                <label asp-for="Name" class="col-sm-2 col-form-label"></label>
-                                                <div class="col-sm-10">
-                                                    <input asp-for="Name" class="form-control" type="text" />
-                                                    <span asp-validation-for="Name" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="Email_Address" class="col-sm-2 col-form-label"></label>
-                                                    <div class="col-sm-10">
-                                                        <input asp-for="Email_Address" class="form-control" type="email" />
-                                                        <span asp-validation-for="Email_Address" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="Cell" class="col-sm-2 col-form-label"></label>
-                                                    <div class="col-sm-10">
-                                                        <input asp-for="Cell" class="form-control" type="number" />
-                                                        <span asp-validation-for="Cell" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="Cell" class="col-sm-2 col-form-label"></label>
-                                                    <div class="col-sm-10">
-                                                        <input asp-for="Cell" class="form-control" type="number" />
-                                                        <span asp-validation-for="Cell" class="text-danger"></span>
-                                                    </div>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="Service" class="col-sm-2 col-form-label"></label>
-                                                    <select asp-for="Service" class="form-select" required>
-                                                        <option selected>Choose...</option>
-                                                        <option value="Construction Servie 1">Construction 1</option>
-                                                        <option value="Construction Servie 1">Construction 2</option>
-                                                    </select>
-                                                </div>
-                                                <div class="form-group">
-                                                    <label asp-for="Message" class="col-sm-2 col-form-label"></label>
-                                                    <textarea asp-for="Service" class="form-control" rows="3" required />
+                    @*<form>
+            <div class="form-group">
+                <label asp-for="Cell" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Cell" class="form-control" type="number" />
+                    <span asp-validation-for="Cell" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Cell" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <input asp-for="Cell" class="form-control" type="number" />
+                    <span asp-validation-for="Cell" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group">
+                <label asp-for="Service" class="col-sm-2 col-form-label"></label>
+                <select asp-for="Service" class="form-select" required>
+                    <option selected>Choose...</option>
+                    <option value="Construction Servie 1">Construction 1</option>
+                    <option value="Construction Servie 1">Construction 2</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Message" class="col-sm-2 col-form-label"></label>
+                <textarea asp-for="Service" class="form-control" rows="3" required />
 
-                                                </div>
-                    </form>*@
+            </div>
+        </form>*@
 
-
-
-
-
-
-
-
-
-                    <form>
-                        <div class="row mb-3">
-                            <label for="inputName" class="col-sm-2 col-form-label">Name</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="inputName" required>
+                    @using (Html.BeginForm("SendEmail", "Home", FormMethod.Post))
+                    {
+                        <form method="post">
+                            <div class="row mb-3 input-group">
+                                <label for="Cell" class="col-sm-3 col-form-label input-group-text">Cell :</label>
+                              
+                                    <input type="number" class="form-control" asp-for="Cell" id="Cell" required>
+                              
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputEmail" class="col-sm-2 col-form-label">Email</label>
-                            <div class="col-sm-10">
-                                <input type="email" class="form-control" id="inputEmail" required>
+                            <div class="row mb-3  input-group">
+                                <label for="Service" class="col-sm-3 col-form-label  input-group-text">Service</label>
+                                <select id="Service" asp-for="Service" class="form-select" required>
+                                    <option selected>Choose...</option>
+                                    <option value="Construction 1">Construction 1</option>
+                                    <option value="Construction 2">Construction 2</option>
+                                </select>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputCell" class="col-sm-2 col-form-label">Cell</label>
-                            <div class="col-sm-10">
-                                <input type="number" class="form-control" id="inputCell" required>
+                            <div class="row mb-3 input-group">
+                                <label value="Message" class="col-sm-3 col-form-label  input-group-text">Message</label>
+                                <textarea class="form-control" asp-for="Message" id="Message" rows="3"></textarea>
                             </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputCell" class="col-sm-2 col-form-label">Service</label>
-                            <select id="serviceEnquiry" class="form-select" required>
-                                <option selected>Choose...</option>
-                                <option>Construction 1</option>
-                                <option>Construction 2</option>
-                            </select>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="inputCell" class="col-sm-2 col-form-label">Message</label>
-                            <textarea class="form-control" id="EnquiryTextArea" rows="3"></textarea>
-                        </div>
 
-                        <button type="submit" class="btn btn-primary">Enquire</button>
-                    </form>
+                            <button type="submit" class="btn btn-primary">Enquire</button>
+                        </form>
+                    }
+
+
+
+
+
+
+
+
+
+
 
 
                 </div>
